@@ -12,6 +12,11 @@ pg.K_LEFT: (-5, 0),
 pg.K_RIGHT: (+5, 0),
 }
 
+
+
+accs = [a for a in range(1, 11)]
+
+
 def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
     """
     オブジェクトが画面内　OR 画面外を判定し、真理値タプルを返す関数
@@ -41,7 +46,7 @@ def main():
     bb_rct.centerx = random.randint(0, WIDTH)
     bb_rct.centery = random.randint(0, HEIGHT)
     vx, vy = +5, +5
-    
+    accs = [a for a in range(1, 11)]
     clock = pg.time.Clock()
     tmr = 0
     
@@ -62,6 +67,10 @@ def main():
                 sum_mv[0] += tpl[0]
                 sum_mv[1] += tpl[1]
                 
+
+                
+        
+                
             
     
 
@@ -70,8 +79,12 @@ def main():
         if check_bound(kk_rct) != (True, True):
             kk_rct.move_ip(-sum_mv[0], -sum_mv[1])
         screen.blit(kk_img, kk_rct)
-        bb_rct.move_ip(vx, vy)
+        avx, avy = vx*accs[min(tmr//500, 9)], vy*accs[min(tmr//500, 9)]
+        bb_rct.move_ip(avx, avy)
         yoko, tate = check_bound(bb_rct) 
+        
+        
+            
         if not yoko: #横方向にはみ出たら
             vx *= -1
         if not tate:#縦方向にはみ出たら
@@ -80,6 +93,8 @@ def main():
         screen.blit(bb_img, bb_rct)
         pg.display.update()
         tmr += 1
+        
+        
         clock.tick(50)
 
 
