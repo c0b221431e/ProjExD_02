@@ -92,8 +92,6 @@ def main():
         bb_rct.move_ip(avx, avy)
         yoko, tate = check_bound(bb_rct) 
         
-        
-            
         if not yoko: #横方向にはみ出たら
             vx *= -1
         if not tate:#縦方向にはみ出たら
