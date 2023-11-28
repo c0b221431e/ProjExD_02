@@ -38,8 +38,6 @@ def main():
     kk_rct = kk_img.get_rect()
     kk_rct.center = 200, 200 
     bb_img = pg.image.load("ex02/fig/baikin.png")
-    #bb_img = pg.Surface((20,20))
-    #bb_img.set_colorkey((0, 0, 0))
     pg.draw.circle(bb_img,(0, 0, 0),(10, 10), 10)
     bb_rct = bb_img.get_rect()
     bb_rct.centerx = random.randint(0, WIDTH)
@@ -84,11 +82,6 @@ def main():
             kk_img = kk_zis[tuple(sum_mv)]
             if sum_mv[0] >= 5:
                 kk_img = pg.transform.flip(kk_img, True, False)
-                
-
-                
-        
-                
     
         screen.blit(bg_img, [0, 0])
         screen.blit(kk_img, kk_rct)
