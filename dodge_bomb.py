@@ -36,7 +36,7 @@ def main():
     kk_img = pg.image.load("ex02/fig/anapan.png")
     kk_img = pg.transform.rotozoom(kk_img, 0, 2.0)
     kk_rct = kk_img.get_rect()
-    kk_rct.center = 900, 400 
+    kk_rct.center = 200, 200 
     bb_img = pg.image.load("ex02/fig/baikin.png")
     #bb_img = pg.Surface((20,20))
     #bb_img.set_colorkey((0, 0, 0))
@@ -66,6 +66,7 @@ def main():
                 return
         
         if kk_rct.colliderect(bb_rct):
+            
             print("Game Over")
             return
             
@@ -110,7 +111,7 @@ def main():
         tmr += 1
         
         
-        clock.tick(50)
+        clock.tick(40)
 
 
 if __name__ == "__main__":
