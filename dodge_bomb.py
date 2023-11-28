@@ -12,8 +12,6 @@ pg.K_LEFT: (-5, 0),
 pg.K_RIGHT: (+5, 0),
 }
 
-
-
 accs = [a for a in range(1, 11)]
 
 
@@ -34,14 +32,15 @@ def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))
-    bg_img = pg.image.load("ex02/fig/pg_bg.jpg")
-    kk_img = pg.image.load("ex02/fig/3.png")
+    bg_img = pg.image.load("ex02/fig/utyu.jpeg")
+    kk_img = pg.image.load("ex02/fig/anapan.png")
     kk_img = pg.transform.rotozoom(kk_img, 0, 2.0)
     kk_rct = kk_img.get_rect()
     kk_rct.center = 900, 400 
-    bb_img = pg.Surface((20,20))
-    bb_img.set_colorkey((0, 0, 0))
-    pg.draw.circle(bb_img,(255, 0, 0),(10, 10), 10)
+    bb_img = pg.image.load("ex02/fig/baikin.png")
+    #bb_img = pg.Surface((20,20))
+    #bb_img.set_colorkey((0, 0, 0))
+    pg.draw.circle(bb_img,(0, 0, 0),(10, 10), 10)
     bb_rct = bb_img.get_rect()
     bb_rct.centerx = random.randint(0, WIDTH)
     bb_rct.centery = random.randint(0, HEIGHT)
