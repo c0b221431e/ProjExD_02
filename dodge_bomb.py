@@ -50,6 +50,17 @@ def main():
     clock = pg.time.Clock()
     tmr = 0
     
+    kk_zis = { #演習１
+    (5, 0):pg.transform.rotozoom(kk_img, 0, 1.0),
+    (5,-5):pg.transform.rotozoom(kk_img, 316, 1.0),
+    (0,-5):pg.transform.rotozoom(kk_img, 270, 1.0),
+    (-5,-5):pg.transform.rotozoom(kk_img, 315, 1.0),
+    (-5,0):pg.transform.rotozoom(kk_img, 0, 1.0),
+    (-5,5):pg.transform.rotozoom(kk_img, 45, 1.0),
+    (0, 5):pg.transform.rotozoom(kk_img, 90, 1.0),
+    (5, 5):pg.transform.rotozoom(kk_img, 45, 1.0),
+    }
+    
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: 
@@ -67,18 +78,23 @@ def main():
                 sum_mv[0] += tpl[0]
                 sum_mv[1] += tpl[1]
                 
+        if(sum_mv[0] >= 5):#演習１
+            kk_img = pg.transform.flip(kk_img,False, True)
+        if sum_mv != [0, 0]:
+            kk_img = kk_zis[tuple(sum_mv)]
+            if sum_mv[0] >= 5:
+                kk_img = pg.transform.flip(kk_img, True, False)
+                
 
                 
         
                 
-            
     
-
         screen.blit(bg_img, [0, 0])
+        screen.blit(kk_img, kk_rct)
         kk_rct.move_ip(sum_mv[0], sum_mv[1])
         if check_bound(kk_rct) != (True, True):
             kk_rct.move_ip(-sum_mv[0], -sum_mv[1])
-        screen.blit(kk_img, kk_rct)
         avx, avy = vx*accs[min(tmr//500, 9)], vy*accs[min(tmr//500, 9)]
         bb_rct.move_ip(avx, avy)
         yoko, tate = check_bound(bb_rct) 
